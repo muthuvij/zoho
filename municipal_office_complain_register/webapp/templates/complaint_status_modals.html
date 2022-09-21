@@ -1,0 +1,82 @@
+<style>
+  .modal-content {
+    background-color: #212121
+  }
+</style>
+
+<!-- Approve Complaint -->
+<div class="modal fade" id="Modal-Approve-{{ complaint.id }}"
+     tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel">
+          {{ complaint.id }}
+        </h5>
+        <button type="button" class="close"
+                data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST">
+          {{ approve_form.hidden_tag() }}
+          <h4 class="text-center">
+            Are you sure you want to approve this complaint ?
+          </h4>
+          <br>
+          <input id="approved_complaint" name="approved_complaint" type="hidden" value="{{complaint.id}}">
+          {{ approve_form.submit(class="btn btn-outline-success btn-block") }}
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+                data-dismiss="modal">Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Disapprove Complaint -->
+<div class="modal fade" id="Modal-Disapprove-{{ complaint.id }}"
+     tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel">
+          {{ complaint.id }}
+        </h5>
+        <button type="button" class="close"
+                data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST">
+          {{ disapprove_form.hidden_tag() }}
+          <label for="reason">Reason</label>
+          <select name="reason" id="reason">
+            <option value="Sorry, we are not responsible">Sorry, we are not responsible</option>
+            <option value="Insufficient details">Insufficient details</option>
+            <option value="Sorry, not enough resources to solve">Sorry, not enough resources to solve</option>
+          </select>
+          <select id="reason"></select>
+          <h4 class="text-center">
+            Are you sure you want to disapprove this complaint ?
+          </h4>
+          <br>
+          <input id="disapproved_complaint" name="disapproved_complaint" type="hidden" value="{{complaint.id}}">
+          {{ disapprove_form.submit(class="btn btn-outline-success btn-block") }}
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+                data-dismiss="modal">Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

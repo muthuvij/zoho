@@ -1,0 +1,40 @@
+<style>
+  .modal-content {
+    background-color: #212121
+  }
+</style>
+
+<!-- Take Action -->
+<div class="modal fade" id="Modal-SolveIssue-{{ complaint.id }}"
+     tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel">
+          Issue Solved!
+        </h5>
+        <button type="button" class="close"
+                data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST">
+          {{ solve_issue_form.hidden_tag() }}
+          <h4 class="text-center">
+            Are you sure that the issue mentioned in this complaint has been solved ?
+          </h4>
+          <br>
+          <input id="solve_issue" name="solve_issue" type="hidden" value="{{complaint.id}}">
+          {{ solve_issue_form.submit(class="btn btn-outline-success btn-block") }}
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+                data-dismiss="modal">Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}
+List My Complaints Page
+{% endblock %}
+{% block content %}
+
+<div class="row" style="margin-top:20px; margin-left:1px; margin-right:1px">
+   <div class="col-12">
+       <h2>All your complaints</h2>
+       <br>
+      <table class="table table-hover table-dark">
+         <thead>
+            <tr>
+               <th scope="col">ID</th>
+               <th scope="col">Name</th>
+               <th scope="col">Address</th>
+               <th scope="col">Phone Number</th>
+               <th scope="col">E-mail Address</th>
+               <th scope="col">Description</th>
+               <th scope="col">Status</th>
+            </tr>
+         </thead>
+         <tbody>
+            <!-- Your rows inside the table HERE: -->
+            {% for complaint in complaints %}
+            <tr>
+               <td>{{ complaint.id }}</td>
+               <td>{{ complaint.name }}</td>
+               <td>{{ complaint.address }}</td>
+               <td>{{ complaint.phone_number }}</td>
+               <td>{{ complaint.email_address }}</td>
+               <td>{{ complaint.description }}</td>
+               <td>{{ complaint.status }}</td>
+            </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+   </div>
+</div>
+{% endblock %}
